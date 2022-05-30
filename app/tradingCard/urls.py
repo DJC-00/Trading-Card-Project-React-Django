@@ -12,7 +12,7 @@ from tradingCard import views
 
 
 router = DefaultRouter()
-router.register('tradingCards', views.TradingCardViewSet)
+router.register('', views.TradingCardViewSet)
 
 app_name = 'tradingCard'
 

@@ -45,7 +45,7 @@ class Recipe(models.Model):
     # Recipe model
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete = models.CASCADE,
+        on_delete = models.DO_NOTHING,
     )
     title = models.CharField(max_length = 255)
     description = models.TextField(blank=True)
@@ -56,16 +56,17 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
 
+
 class TradingCard(models.Model):
     # Recipe model
     creator = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        related_name='creator',
-        on_delete = models.CASCADE,
+        User,
+        related_name = 'creator',
+        on_delete = models.DO_NOTHING,
     )
     owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        related_name='owner',
+        User,
+        related_name = 'owner',
         on_delete = models.CASCADE,
     )
     name = models.CharField(max_length = 255)
@@ -75,3 +76,30 @@ class TradingCard(models.Model):
             size = 4)
     specMove = models.CharField(max_length = 255)
     link = models.CharField(max_length = 255, blank = True)
+    rating = models.FloatField(default = 0)
+    ratingCount = models.IntegerField(default = 0)
+    isListed = models.BooleanField(default = False)
+
+
+# class TradingCard(models.Model):
+#     # Recipe model
+#     creator = models.ForeignKey(
+#         settings.AUTH_USER_MODEL,
+#         related_name='creator',
+#
+#     )
+#     owner = models.ForeignKey(
+#         settings.AUTH_USER_MODEL,
+#         related_name='owner',
+#         on_delete = models.CASCADE,
+#     )
+#     name = models.CharField(max_length = 255)
+#     rarity = models.CharField(max_length = 20)
+#     stats = ArrayField(
+#                 models.FloatField(),
+#             size = 4)
+#     specMove = models.CharField(max_length = 255)
+#     link = models.CharField(max_length = 255, blank = True)
+#     rating = models.FloatField(default = 0)
+#     ratingCount = models.IntegerField(default = 0)
+#     isListed = models.BooleanField(default = False)

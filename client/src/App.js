@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootswatch/dist/vapor/bootstrap.min.css'; // Added this :boom:
 import {
   BrowserRouter,
@@ -8,6 +8,12 @@ import {
   Link
 } from "react-router-dom";
 import AllCards from './components/AllCards';
+import ModalTest from './components/ModalTest';
+import Modal from './components/Modal';
+import ProfileView from './views/ProfileView';
+import Navbar from './components/Navbar';
+
+
 
 function Home() {
   return (
@@ -23,17 +29,26 @@ function Home() {
 }
 
 function App() {
+
+
+
   return (
-    <div className='container'>
-      <hr/>
-      <BrowserRouter>
-        <div className="App">
-          <Routes>
-            <Route exact path="/" element = {<Home/>}/>
-            <Route exact path="/allcards" element = {<AllCards/>}/>
-          </Routes>
-        </div>
-      </BrowserRouter>
+    <div>
+      <div className="pb-4">
+        <Navbar />
+      </div>
+      <div className='container'>
+        <hr/>
+        <BrowserRouter>
+          <div className="App">
+            <Routes>
+              <Route exact path="/" element = {<Home/>}/>
+              <Route exact path="/profile" element = {<ProfileView/>}/>
+              <Route exact path="/allcards" element = {<AllCards/>}/>
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }

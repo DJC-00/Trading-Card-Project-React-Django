@@ -11,7 +11,7 @@ const AllCards = (props) => {
     }
 
     useEffect(()=>{
-        axios.get('http://localhost:8000/api/tradingcard/tradingCards')
+        axios.get('http://localhost:8000/api/tradingcard')
             .then(response=>{
                 setCards(response.data);
                 console.log(cards)
