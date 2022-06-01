@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'recipe',
     'tradingCard',
     'corsheaders',
+    'selenium',
+    'webdriver_manager',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

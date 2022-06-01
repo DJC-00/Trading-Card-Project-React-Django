@@ -3,3 +3,5 @@ djangorestframework>=3.12.4,<3.13
 psycopg2>=2.8.6,>2.9
 drf-spectacular>=0.15.1,<0.16
 django-cors-headers>=3.12, <3.13
+selenium>=4.2.0, <4.3
+webdriver-manager>=3.7.0, <3.8

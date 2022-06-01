@@ -14,7 +14,7 @@ RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     apk add --update --no-cache postgresql-client && \
     apk add --update --no-cache --virtual .tmp-build-deps \
-        build-base postgresql-dev musl-dev && \
+        build-base postgresql-dev musl-dev libffi-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
@@ -26,6 +26,15 @@ RUN python -m venv /py && \
         --no-create-home \
         django-user
 
+RUN apk update && \
+    apk add --update --no-cache ca-certificates wget && \
+    update-ca-certificates && \
+    wget https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux32.tar.gz && \
+    tar -xvzf geckodriver*
+    # chmod +x geckodriver && \
+    # sudo mv geckodriver /usr/local/bin/
+
 ENV PATH="/py/bin:$PATH"
+ENV DRIVERPATH = "/usr/local/bin/geckodriver"
 
 USER django-user

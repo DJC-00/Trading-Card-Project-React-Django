@@ -67,7 +67,7 @@ class TradingCard(models.Model):
     owner = models.ForeignKey(
         User,
         related_name = 'owner',
-        on_delete = models.CASCADE,
+        on_delete = models.DO_NOTHING,
     )
     name = models.CharField(max_length = 255)
     rarity = models.CharField(max_length = 20)
